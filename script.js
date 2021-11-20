@@ -3,8 +3,11 @@
 // DOM selector
 const container = document.querySelector('.container');
 
-// Random colors
-const colors = ['#00A5E3', '#FC6238', '#FFEC59', '#4DD091', '#C05780'];
+// Random number
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+// Random rgb color
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
 // Max squares
 const SQUARES = 500;
@@ -22,7 +25,7 @@ for (let i = 0; i < SQUARES; i++) {
 
 // Set random color
 function setColor(e) {
-  const color = getRandomColor();
+  const color = randomColor();
   e.style.background = color;
   e.style.boxShadow = `0 0 2px ${color}, 0 0 10px ${color}`
 }
@@ -31,9 +34,4 @@ function setColor(e) {
 function removeColor(e) {
   e.style.background = '#333';
   e.style.boxShadow = '0 0 2px #000';
-}
-
-// Get random color
-function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)]
 }
